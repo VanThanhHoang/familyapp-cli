@@ -4,12 +4,14 @@ export async function onGoogleButtonPress() {
           // Check if your device supports Google Play
     await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
     // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn();
-    console.log(idToken);
-    // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    // Sign-in the user with the credential
-    return auth().signInWithCredential(googleCredential);
+    const res = await GoogleSignin.signIn();
+    console.log('google-info',{
+        id: res.user.id,
+        name: res.user.name,
+        email: res.user.email,
+        photo: res.user.photo
+    });
+    console.log('google-token',res.idToken);
     }catch(e){
         console.log(e);
     }
