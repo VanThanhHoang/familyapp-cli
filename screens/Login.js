@@ -23,7 +23,8 @@ import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import {CountryPicker} from 'react-native-country-codes-picker';
 import {APP_CONSTANTS} from '../helper/constant';
-import { onGoogleButtonPress } from '../service/gooogle-signin';
+import {onGoogleButtonPress} from '../service/gooogle-signin';
+import saveLocal from '../service/save-local';
 const Login = () => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -94,28 +95,9 @@ const Login = () => {
         password,
       };
       const endpoint = isUsePhone ? 'login/phone/' : 'login/email/';
-      console.log(data);
-      console.log(endpoint);
       const response = await AxiosInstance().post(endpoint, data);
-      console.log(response);
       // Lưu các giá trị vào AsyncStorage
-      await AsyncStorage.setItem('access', response.access);
-      await AsyncStorage.setItem('refresh', response.refresh);
-      await AsyncStorage.setItem('email', response.email);
-      await AsyncStorage.setItem('id', response.id.toString());
-      await AsyncStorage.setItem('people_id', response.people_id?.toString());
-      await AsyncStorage.setItem(
-        'profile_picture',
-        response?.profile_picture || APP_CONSTANTS.defaultAvatar,
-      );
-      await AsyncStorage.setItem(
-        'marital_status',
-        response.marital_status?.toString() || 'true',
-      );
-      await AsyncStorage.setItem(
-        'gender',
-        response.gender?.toString() || 'false',
-      );
+      saveLocal(response);
       navigation.reset({
         index: 0,
         routes: [{name: 'Profile'}],
@@ -237,7 +219,6 @@ const Login = () => {
             </View>
           )}
 
-
           <View style={{marginBottom: 12}}>
             <View
               style={{
@@ -267,9 +248,11 @@ const Login = () => {
                   position: 'absolute',
                   right: 12,
                 }}>
-                <Ionicons name={
-                  isPasswordShown ? 'eye-off-outline' : 'eye-outline'
-                } size={24} color={COLORS.black} />
+                <Ionicons
+                  name={isPasswordShown ? 'eye-off-outline' : 'eye-outline'}
+                  size={24}
+                  color={COLORS.black}
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -357,8 +340,20 @@ const Login = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={onGoogleButtonPress
-              }
+              onPress={async () => {
+                setIsLoading(true);
+                try {
+                  if (await onGoogleButtonPress()) {
+                    navigation.reset({
+                      index: 0,
+                      routes: [{name: 'Profile'}],
+                    });
+                  }
+                } catch (e) {
+                } finally {
+                  setIsLoading(false);
+                }
+              }}
               style={{
                 flex: 1,
                 alignItems: 'center',
