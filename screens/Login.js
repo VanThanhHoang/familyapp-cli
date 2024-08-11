@@ -25,6 +25,7 @@ import {CountryPicker} from 'react-native-country-codes-picker';
 import {APP_CONSTANTS} from '../helper/constant';
 import {onGoogleButtonPress} from '../service/gooogle-signin';
 import saveLocal from '../service/save-local';
+import { onFacebookButtonPress } from '../service/fb-signin';
 const Login = () => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -314,7 +315,20 @@ const Login = () => {
               justifyContent: 'center',
             }}>
             <TouchableOpacity
-              onPress={() => console.log('Pressed')}
+              onPress={async ()=>{
+                setIsLoading(true);
+                try {
+                  if (await onFacebookButtonPress()) {
+                    navigation.reset({
+                      index: 0,
+                      routes: [{name: 'Profile'}],
+                    });
+                  }
+                } catch (e) {
+                } finally {
+                  setIsLoading(false);
+                }
+              }}
               style={{
                 flex: 1,
                 alignItems: 'center',

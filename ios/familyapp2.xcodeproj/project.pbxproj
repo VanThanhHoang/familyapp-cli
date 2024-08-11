@@ -28,7 +28,7 @@
 		051721642C666EAD0016AC90 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 051721512C666EAD0016AC90 /* SimpleLineIcons.ttf */; };
 		051721652C666EAD0016AC90 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 051721522C666EAD0016AC90 /* FontAwesome6_Brands.ttf */; };
 		051721662C666EAD0016AC90 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 051721532C666EAD0016AC90 /* MaterialIcons.ttf */; };
-		0517216A2C66810D0016AC90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 051721692C66810D0016AC90 /* GoogleService-Info.plist */; };
+		05FF48232C67CDC800ADDFF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05FF48222C67CDC800ADDFF3 /* GoogleService-Info.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -69,7 +69,8 @@
 		051721512C666EAD0016AC90 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		051721522C666EAD0016AC90 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		051721532C666EAD0016AC90 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		051721692C66810D0016AC90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05DA96412C68808F00DFDDAD /* familyapp2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = familyapp2.entitlements; path = familyapp2/familyapp2.entitlements; sourceTree = "<group>"; };
+		05FF48222C67CDC800ADDFF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* familyapp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = familyapp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = familyapp2/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = familyapp2/AppDelegate.mm; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		13B07FAE1A68108700A75B9A /* familyapp2 */ = {
 			isa = PBXGroup;
 			children = (
+				05DA96412C68808F00DFDDAD /* familyapp2.entitlements */,
 				051721402C666EAD0016AC90 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -184,7 +186,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				051721692C66810D0016AC90 /* GoogleService-Info.plist */,
+				05FF48222C67CDC800ADDFF3 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* familyapp2 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* familyapp2Tests */,
@@ -331,7 +333,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0517215A2C666EAD0016AC90 /* MaterialCommunityIcons.ttf in Resources */,
 				051721632C666EAD0016AC90 /* FontAwesome6_Solid.ttf in Resources */,
-				0517216A2C66810D0016AC90 /* GoogleService-Info.plist in Resources */,
+				05FF48232C67CDC800ADDFF3 /* GoogleService-Info.plist in Resources */,
 				051721572C666EAD0016AC90 /* FontAwesome6_Regular.ttf in Resources */,
 				051721662C666EAD0016AC90 /* MaterialIcons.ttf in Resources */,
 			);
@@ -588,6 +590,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = familyapp2/familyapp2.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = familyapp2/Info.plist;
@@ -615,6 +618,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = familyapp2/familyapp2.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = familyapp2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -18,6 +18,7 @@ import axios from "axios"; // Nhập axios từ thư viện axios
 import { APP_CONSTANTS } from "../helper/constant";
 import { LinearGradient } from "react-native-linear-gradient";
 import { useThemeContext } from "../ThemeContext";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 
 const ProfileScreen = () => {
@@ -55,7 +56,7 @@ const ProfileScreen = () => {
         gender,
       });
     } catch (e) {
-      console.log(e);
+      console.log("Get user info error:");
     }
   };
 
@@ -180,6 +181,7 @@ const ProfileScreen = () => {
           <TouchableOpacity
             onPress={() => {
               AsyncStorage.clear();
+              GoogleSignin.signOut();
               navigation.reset({
                 index: 0,
                 routes: [{ name: "Login" }],
@@ -215,7 +217,7 @@ const ProfileScreen = () => {
           </TouchableOpacity>
         </View>
         <Text style={[styles.emailText, { color: theme.colors.text }]}>
-          {userInfo.email}
+          {userInfo.full_name_vn}
         </Text>
       </View>
       <View style={styles.settingsContainer}>
@@ -267,14 +269,14 @@ const ProfileScreen = () => {
           style={styles.crmButton}
           onPress={handleCrmButtonPress}
         >
-          <LinearGradient
+          {/* <LinearGradient
             colors={["#FFD700", "#FFA500"]} // Change to yellow gradient
             start={[0, 0]}
             end={[1, 1]}
             style={styles.crmButtonGradient}
           >
             <Text style={styles.crmButtonText}>BUSINESS CRM</Text>
-          </LinearGradient>
+          </LinearGradient> */}
         </TouchableOpacity>
       </View>
     </View>
